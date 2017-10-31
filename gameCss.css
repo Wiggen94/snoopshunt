@@ -1,0 +1,31 @@
+#game {
+	background-image: url('dh2.png'); 
+	background-repeat: no-repeat; 
+	background-position: right;
+	height: 600px;
+	width: 900px;
+	margin-top: 50px;
+	border: 1px solid black;
+	position: relative;
+}
+
+@font-face {
+	font-family: Arcadefont;
+	src: url('duckhunt.ttf');
+}
+
+#scoreboard {
+	font-family: Arcadefont, arial-serif; 
+	font-size: 50px;
+	color: black;
+	float: right;
+	
+}
+
+#timerboard {
+	font-family: Arcadefont, arial-serif; 
+	font-size: 50px;
+	color: black;
+	float: left;
+	
+}
