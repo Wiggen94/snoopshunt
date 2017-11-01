@@ -14,6 +14,7 @@ var game = document.getElementById('game');
 var timerH1 = document.getElementById('timerboard')
 var scoreH1 = document.getElementById('scoreboard')
 var plantsDiv = document.getElementById('plants')
+
 //Sørger for at brukerne ikke kan høyre klikke på spillet
 game.addEventListener('contextmenu', event => event.preventDefault());
 
@@ -56,44 +57,6 @@ function scoreBoardUpdate (change) {
 	}
 	scoreH1.innerHTML = "Score: " + score;
 }
-
-// Lager planter og sørge at man kan trykk på de
-function drawWeed () {
-
-	divId++;
-
-	// Inkrementerer divID, sånn at alle div får en unik ID
-	
-
-	// Lager en div og setter attributter
-	
-
-	// Creates timer for plant
-	var weedH1 = document.createElement('h1');
-	weedH1.setAttribute('id', 'weedH1');
-	var weedH1Time = document.createTextNode(timeWeed)
-
-	//weedH1.appendChild(weedH1Time);
-	//weed.appendChild(weedH1)
-	// game.appendChild(weed);
-
-	timeWeed = 3;
-	var weedTimerInterval = setInterval( function () {
-
-	}, 1000) 
-
-	// Onclick
-	/* weed.onclick = function () {
-		scoreBoardUpdate('+');
-		weedH1.removeChild(weedH1Time);
-		game.removeChild(weed);
-		drawWeed();
-	} */
-
-
-
-}
-
 // Object creating
 
 function Weed (y, divId) {
@@ -101,31 +64,37 @@ function Weed (y, divId) {
 	this.y = yWeed;
 	this.id = divId
 
+\
+
 	this.draw = function () {
 		var weed = document.createElement('div');
 		weed.setAttribute('id', 'weed' + this.id);
+		weed.setAttribute('onclick', 'weedClick(' + weed.id + ');')
 		weed.style.backgroundColor = color[0];
 		weed.style.width = weedSize + 'px';
 		weed.style.height = weedSize + 'px';
 		weed.style.marginTop = this.y + 'px';
 		weed.style.marginLeft = Math.floor(Math.random()*800 + 1) + 'px';
+		
 
 
 		game.appendChild(weed);
-
-		console.log(this)
-
-		// this.timer();
 	}
-
 
 
 
 	
 }
 
-for(var i = 0; i < 1; i++) {
-	divId = i;
+function weedClick(weed) {
+	game.removeChild(weed);
+	scoreBoardUpdate('+');
+	drawWeed();	
+}
+
+
+function drawWeed () {
+
 	var divText = new Weed(yWeed, divId)
 	divText.draw();
 }
