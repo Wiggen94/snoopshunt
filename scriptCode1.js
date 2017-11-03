@@ -1,5 +1,6 @@
 var yWeed = 460;
 var weedSize = 100;
+var politiSize = 50;
 
 var time = 15;
 var score = 0;
@@ -28,7 +29,7 @@ window.onload = function() {
 
 // Timer funksjon
 function drawTimer () {
-	
+
 	timerH1.innerHTML = 'Time: ' + time
 
 	// selve timer, se psuedokode.
@@ -85,11 +86,11 @@ function Weed (y, divId) {
 
 var weedTimeout;
 
-function weedTimer(weed) {	 
+function weedTimer(weed) {
 	weedTimeout = setTimeout(function() {
 		deleteWeed(weed, '-');
 	}, Math.random()*(2000-1000) + 1000);
-	
+
 }
 
 
@@ -102,6 +103,10 @@ function weedClick(weed) {
 function drawWeed () {
 	var divText = new Weed(yWeed, divId)
 	divText.draw();
+	if ((Math.random()*(2000-1000)+1000)<=1100){
+		drawPoliti();
+	}
+
 }
 
 function deleteWeed(weed, change) {
@@ -109,5 +114,37 @@ function deleteWeed(weed, change) {
 	scoreBoardUpdate(change);
 	drawWeed();
 }
+function Politi (divId) {
+
+	this.id = divId
 
 
+	this.draw = function () {
+		var politi = document.createElement('img');
+		politi.setAttribute('id', 'politi' + this.id);
+		politi.setAttribute('src','img/politi.png');
+
+		politi.style.position = 'absolute';
+		politi.style.marginTop = 485 + 'px';
+		politi.style.marginLeft = 600 + 'px';
+		politi.style.float = 'right';
+		politi.style.display = 'visible';
+		var pos = 0;
+		var id = setInterval(frame, 5);
+		function frame() {
+				if (pos == 900) {
+						clearInterval(id);
+				} else {
+						pos++;
+						politi.style.right = pos + 'px';
+				}
+		}
+		game.appendChild(politi);
+	}
+}
+function drawPoliti () {
+
+	var divText = new Politi(divId)
+	divText.draw();
+
+}
