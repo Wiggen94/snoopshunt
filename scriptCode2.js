@@ -1,15 +1,21 @@
-var yWeed = 460;
+var yWeed = 450;
 var weedSize = 100;
 
+var color = ['#92d090', '#ffcf79', '#e5e4d7', '#2c6700' ];
+
 var time = 15;
+var timeWeed;
 var score = 0;
+
 var divId = 0;
 
-//Henter game-, timerh1-, og score-elementer
+var weed;
+
+//Henter game- og timerh1-diven
 var game = document.getElementById('game');
 var timerH1 = document.getElementById('timerboard');
 var scoreH1 = document.getElementById('scoreboard');
-
+var plantsDiv = document.getElementById('plants');
 
 //Sørger for at brukerne ikke kan høyre klikke på spillet
 game.oncontextmenu = function () {
@@ -18,20 +24,15 @@ game.oncontextmenu = function () {
 
 // Sørger for at alle funksjoner kjører
 window.onload = function() {
-	//starter timer funksjonen
 	drawTimer();
-	//tegner første weedplanten
 	drawWeed();
-	//tegner scoreboarden
 	scoreBoardUpdate();
 };
 
-// Timer funksjon
+// Lager og oppdaterer timeren
 function drawTimer () {
-	
 	timerH1.innerHTML = 'Time: ' + time
 
-	// selve timer, se psuedokode.
 	var timerInterval = setInterval( function () {
 		if (time > 0) {
 			time--;
@@ -54,60 +55,66 @@ function scoreBoardUpdate (change) {
 			break;
 		case '-':
 			score--;
+
 			break;
 
 	}
 	scoreH1.innerHTML = "Score: " + score;
 }
-// Object creating
 
+// Object creating
 function Weed (y, divId) {
 
 	this.y = yWeed;
 	this.id = divId
 
-	this.draw = function () {
-		var weed = document.createElement('div');
-		weed.setAttribute('id', 'weed' + this.id);
-		weed.setAttribute('onclick', 'weedClick(' + weed.id + ');')
-		weed.style.backgroundImage = 'url("img/plante.png")';
-		weed.style.width = weedSize + 'px';
-		weed.style.height = weedSize + 'px';
-		weed.style.position = 'absolute';
-		weed.style.marginTop = this.y + 'px';
-		weed.style.marginLeft = Math.random()*600 + 'px';
 
-		game.appendChild(weed);
-		weedTimer(weed);
+	this.draw = function () { 
+		  var weed = document.createElement('div');
+	  weed.setAttribute('id', 'weed' + this.id);
+	  weed.setAttribute('onclick', 'weedClick(' + weed.id + ');')
+	  weed.style.backgroundImage = 'url("img/plante.jpg")';
+	  weed.style.width = weedSize + 'px';
+	  weed.style.height = weedSize + 'px';
+	  weed.style.position = 'absolute';
+	  weed.style.marginTop = this.y + 'px';
+	  weed.style.marginLeft = Math.random()*600 + 'px';
+	  game.appendChild(weed);
+	  weedTimer(weed);
+
+
+
 	}
+
+	
+}
+
+function weedClick(weed) {
+		game.removeChild(weed);
+		scoreBoardUpdate('+');
+		drawWeed();
 }
 
 
-var weedTimeout;
 
-function weedTimer(weed) {	 
-	weedTimeout = setTimeout(function() {
-		deleteWeed(weed, '-');
-	}, Math.random()*(2000-1000) + 1000);
+function weedTimer(weed) {
+	// debugger;
+	setTimeout(function() {
+		game.removeChild(weed);
+		scoreBoardUpdate('-');
+		drawWeed();
+	}, Math.floor(Math.random()*(2000-1000) + 1000));
+
 	
 }
 
 
-function weedClick(weed) {
-	clearTimeout(weedTimeout)
-	deleteWeed(weed, '+');
-}
-
 
 function drawWeed () {
-	var divText = new Weed(yWeed, divId)
-	divText.draw();
+
+	var weed = new Weed(yWeed, divId)
+	weed.draw();
 }
 
-function deleteWeed(weed, change) {
-	game.removeChild(weed);
-	scoreBoardUpdate(change);
-	drawWeed();
-}
 
 
