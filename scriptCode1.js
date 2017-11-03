@@ -1,7 +1,7 @@
-var yWeed = 475;
+var yWeed = 460;
 var weedSize = 100;
 
-var color = ['#92d090', '#ffcf79', '#e5e4d7', '#2c6700' ]
+var color = ['#92d090', '#ffcf79', '#e5e4d7', '#2c6700' ];
 
 var time = 15;
 var timeWeed;
@@ -11,20 +11,22 @@ var divId = 0;
 
 //Henter game- og timerh1-diven
 var game = document.getElementById('game');
-var timerH1 = document.getElementById('timerboard')
-var scoreH1 = document.getElementById('scoreboard')
-var plantsDiv = document.getElementById('plants')
+var timerH1 = document.getElementById('timerboard');
+var scoreH1 = document.getElementById('scoreboard');
+var plantsDiv = document.getElementById('plants');
 
 //Sørger for at brukerne ikke kan høyre klikke på spillet
-game.addEventListener('contextmenu', event => event.preventDefault());
+game.oncontextmenu = function () {
+   return false;
+};
 
 // Sørger for at alle funksjoner kjører
 window.onload = function() {
 	drawTimer();
 	drawWeed();
 	scoreBoardUpdate();
-}
-	
+};
+
 // Lager og oppdaterer timeren
 function drawTimer () {
 	timerH1.innerHTML = 'Time: ' + time
@@ -53,7 +55,7 @@ function scoreBoardUpdate (change) {
 			score--;
 
 			break;
-		
+
 	}
 	scoreH1.innerHTML = "Score: " + score;
 }
@@ -64,32 +66,34 @@ function Weed (y, divId) {
 	this.y = yWeed;
 	this.id = divId
 
-\
 
 	this.draw = function () {
 		var weed = document.createElement('div');
 		weed.setAttribute('id', 'weed' + this.id);
 		weed.setAttribute('onclick', 'weedClick(' + weed.id + ');')
-		weed.style.backgroundColor = color[0];
+		weed.style.backgroundImage = 'url("img/plante.png")';
 		weed.style.width = weedSize + 'px';
 		weed.style.height = weedSize + 'px';
+		weed.style.position = 'absolute';
 		weed.style.marginTop = this.y + 'px';
-		weed.style.marginLeft = Math.floor(Math.random()*800 + 1) + 'px';
-		
-
-
+		weed.style.marginLeft = Math.random()*600 + 'px';
 		game.appendChild(weed);
+		weedTimer(weed);
 	}
-
-
-
-	
 }
+function weedTimer(weed) {
+			setTimeout(function() {
+				game.removeChild(weed);
+				scoreBoardUpdate('-');
+				drawWeed();
+			}, Math.floor(Math.random()*(2000-1000) + 1000));
+}
+
 
 function weedClick(weed) {
 	game.removeChild(weed);
 	scoreBoardUpdate('+');
-	drawWeed();	
+	drawWeed();
 }
 
 
