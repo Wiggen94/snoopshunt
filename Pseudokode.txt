@@ -1,0 +1,44 @@
+window.onload funksjon:
+	Kaller timer funksjonen som sørger at den starte å kjøre når canvas er kalt.
+	Tegner første weed planten som sørger at spilleren kan trykke på den.
+	Skriver ut scoreboard sånn at spilleren ser hvor poeng kommer til å stå.
+funksjon deleteWeed:
+	fjerner 	
+
+funksjon drawTimer:
+	Printer ut nåværende verdi av timer, siden den blir kalt i window.onload.
+	Starter en setInterval som itererrer hvert 1000 ms (1 sek) og sjekker om time er større enn 0, som betyr at 
+	spillet fortsatt foregår. Når den er sant dekrementerer den time og printer ut 'oppdateringen'. 
+	Hvis timer ikke	er større enn null så er tiden ute og spillet ferdig, den stopper intervalen,
+	alerter spilleren om at spillet er ferdig og hvor mye poeng h*n fikk. Så resetes og oppdateres score.
+
+funksjon scoreBoardUpdate:
+	har en parameter som er 'change'.
+	når funksjonen er kalt så vil 'change' gå gjennom en switch og enten inkrementere score med en
+	eller dekrementere den. Dette er en enkel funksjon som blir kalt hver gang vi vil oppdatere scoren.
+
+funksjon weed:
+	har 2 parametere y og divId. 
+	y er vilkårlig sånn at weeden blir tegnet på en vilkårlig plass, og divId hjelper oss i koden. 
+	this.draw er en funksjon som lager weeden og legger til nødvendige attributer og css. 
+	så appende funksjonen weeden til game diven, sånn at den blir synlig for spilleren, og kaller en timer
+	som sørger at weeden får en leve tid.
+
+funksjon weedTimer:
+	har en parameter som er weed, og som referer til weeden i forrige punkt.
+	setter en timeout, som varier mellom 1000 og 2000 ms. Når timeouten er ferdig så kaller
+	den deleteWeed (se lengere ned for forklaring av deleteWeed) med parametere weed, som sørger
+	at den skal jobbe med weed div-en, og '-' fordi man får minus poeng for å ikke plukke weeden. 
+
+funksjon weedClick:
+	har en parameter som er weed, og som referer til weeden i tidligere punkt.
+	stopper timeouten nevnt ovenfor, kaller deleteWeed funksjonen med weed og '+' som parametere.
+
+funksjon drawWeed:
+	kaller fram en ny object som da lager en ny weed og starter alle nye timers. Og kaller draw funksjonen 
+	til objektet.
+
+funksjon deleteweed:
+	tar 2 parametere som er weed, henter altså weeden som vi vil jobbe med, og forandringen i score 'change 'så
+	fjerner funksjonen weed fra game diven, oppdaterer scoreboard med forandringen og kaller drawWeed funksjonen
+	som starter hele loppen igjen.
