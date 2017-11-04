@@ -1,34 +1,37 @@
 #game {
-	background-image: url('dh2.png'); 
-	background-repeat: no-repeat; 
+	background-image: url('dh2.png');
+	background-repeat: no-repeat;
 	background-position: right;
 	height: 600px;
 	width: 900px;
 	margin-top: 50px;
 	border: 1px solid black;
 	position: relative;
-	
+	/* Disse gjør at man ikke kan dra markere fonter og elementer i spillet */
+	-webkit-user-select: none; /* Safari */
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* IE10+/Edge */
+	user-select: none; /* Standard */
 }
 
 @font-face {
 	font-family: Arcadefont;
 	src: url('duckhunt.ttf');
 }
-
 #scoreboard {
-	font-family: Arcadefont, arial-serif; 
+	font-family: Arcadefont, arial-serif;
 	font-size: 50px;
 	color: black;
 	float: right;
-	
+
 }
 
 #timerboard {
-	font-family: Arcadefont, arial-serif; 
+	font-family: Arcadefont, arial-serif;
 	font-size: 50px;
 	color: black;
 	float: left;
-	
+
 }
 
 #weedH1 {
@@ -37,5 +40,3 @@
 	font-size: 50px;
 	color: black;
 }
-
-

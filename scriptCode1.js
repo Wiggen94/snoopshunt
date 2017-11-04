@@ -1,6 +1,7 @@
 var yWeed = 460;
 var weedSize = 100;
 
+
 var time = 15;
 var score = 0;
 var divId = 0;
@@ -26,14 +27,8 @@ window.onload = function() {
 	scoreBoardUpdate();
 };
 
-
 // Timer funksjon
 function drawTimer () {
-	
-=======
-// Timer funksjon
-function drawTimer () {
-
 
 	timerH1.innerHTML = 'Time: ' + time
 
@@ -91,16 +86,11 @@ function Weed (y, divId) {
 
 var weedTimeout;
 
-function weedTimer(weed) {	 
-	weedTimeout = setTimeout(function() {
-		deleteWeed(weed, '-');
-	}, Math.random()*(2000-1000) + 1000);
-	
-=======
 function weedTimer(weed) {
 	weedTimeout = setTimeout(function() {
 		deleteWeed(weed, '-');
 	}, Math.random()*(2000-1000) + 1000);
+
 }
 
 
@@ -116,6 +106,7 @@ function drawWeed () {
 	if ((Math.random()*(2000-1000)+1000)<=1100){
 		drawPoliti();
 	}
+
 }
 
 function deleteWeed(weed, change) {
@@ -123,7 +114,6 @@ function deleteWeed(weed, change) {
 	scoreBoardUpdate(change);
 	drawWeed();
 }
-
 function Politi (divId) {
 
 	this.id = divId
@@ -133,18 +123,18 @@ function Politi (divId) {
 		var politi = document.createElement('img');
 		politi.setAttribute('id', 'politi' + this.id);
 		politi.setAttribute('src','img/politi.png');
-
+		politi.setAttribute('draggable','false');
 		politi.style.position = 'absolute';
 		politi.style.marginTop = 485 + 'px';
 		politi.style.marginLeft = 600 + 'px';
 		politi.style.float = 'right';
 		politi.style.display = 'visible';
 		var pos = 0;
-		var id = setInterval(frame, 5);
+		var id = setInterval(frame, 1);
 		function frame() {
 				if (pos == 900) {
 						clearInterval(id);
-            game.removeChild(politi)
+						game.removeChild(politi)
 				} else {
 						pos++;
 						politi.style.right = pos + 'px';
@@ -154,9 +144,6 @@ function Politi (divId) {
 	}
 }
 function drawPoliti () {
-
 	var divText = new Politi(divId)
 	divText.draw();
-
 }
-
