@@ -40,3 +40,10 @@
 	font-size: 50px;
 	color: black;
 }
+#quotes {
+	display: inline-block;
+	margin-top: 115px;
+	margin-left: -140px;
+	width: 130px;
+	position: absolute;
+}
