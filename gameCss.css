@@ -7,6 +7,7 @@
 	margin-top: 50px;
 	border: 1px solid black;
 	position: relative;
+	overflow: hidden;
 	/* Disse gjør at man ikke kan dra markere fonter og elementer i spillet */
 	-webkit-user-select: none; /* Safari */
 	-moz-user-select: none; /* Firefox */
@@ -47,4 +48,34 @@
 	margin-left: -140px;
 	width: 130px;
 	position: absolute;
+}
+#startknapp{
+	background-color: red;
+	width: 200px;
+	height: 100px;
+	margin-top: 200px;
+	margin-left: 350px;
+}
+#starth1 {
+	font-family: Arcadefont, arial-serif;
+	text-align: center;
+	font-size: 50px;
+	color: black;
+	margin-top: 25px;
+}
+#tittelh1 {
+	font-family: Arcadefont, arial-serif;
+	text-align: center;
+	font-size: 75px;
+	color: black;
+	margin-top: 100px;
+}
+#snakkeboble {
+
+	position: absolute;
+	margin-top: 40px;
+	margin-left: -60px;
+	width: 300px;
+	float: left;
+	display: inline-block;
 }
