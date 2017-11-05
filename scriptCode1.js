@@ -1,8 +1,4 @@
-var yWeed = 460;
-var weedSize = 100;
-
-
-var time = 15;
+var time = 30;
 var score = 0;
 var divId = 0;
 
@@ -61,20 +57,17 @@ function scoreBoardUpdate(change) {
 }
 // Object creating
 
-function Weed(y, divId) {
-
-  this.y = yWeed;
+function Weed(divId) {
   this.id = divId;
-
   this.draw = function() {
     var weed = document.createElement('div');
-    weed.setAttribute('id', 'weed' + this.id);
+    weed.setAttribute('id', 'weed' + this.id++);
     weed.setAttribute('onclick', 'weedClick(' + weed.id + ');');
-    weed.style.backgroundImage = 'url("img/plante.png")';
-    weed.style.width = weedSize + 'px';
-    weed.style.height = weedSize + 'px';
+    weed.style.backgroundImage = 'url("img/plante.gif?' + weed.id + '")';
+    weed.style.width = 100 + 'px';
+    weed.style.height = 100 + 'px';
     weed.style.position = 'absolute';
-    weed.style.marginTop = this.y + 'px';
+    weed.style.marginTop = 400 + 'px';
     weed.style.marginLeft = Math.random() * 600 + 'px';
 
     game.appendChild(weed);
@@ -88,7 +81,7 @@ var weedTimeout;
 function weedTimer(weed) {
   weedTimeout = setTimeout(function() {
     deleteWeed(weed, '-');
-  }, Math.random() * (2000 - 1000) + 1000);
+  }, Math.random() * (4000 - 1500) + 1500);
 
 }
 
@@ -100,95 +93,107 @@ function weedClick(weed) {
 
 
 function drawWeed() {
-  var divText = new Weed(yWeed, divId);
+  var divText = new Weed(divId);
   divText.draw();
-  drawGutt();
-
+  if (document.getElementById('politi') != null) {
+    game.removeChild(document.getElementById('gutt'));
+    game.removeChild(document.getElementById('snakkeboble'));
+    document.getElementById('quotes').innerHTML = '';
+  } else {
+    if (time < 25 && (Math.random() * (2000 - 1000) + 1000) < 1200 && document.getElementById('politi') == null) {
+      drawGutt();
+    }
+  }
 }
+
 
 function deleteWeed(weed, change) {
   game.removeChild(weed);
   scoreBoardUpdate(change);
+  divId++;
   drawWeed();
 }
 
 function Politi(divId) {
 
-  this.id = divId;
 
 
   this.draw = function() {
     var politi = document.createElement('img');
-    politi.setAttribute('id', 'politi' + this.id);
+    politi.setAttribute('id', 'politi');
     politi.setAttribute('src', 'img/politi.png');
     politi.setAttribute('draggable', 'false');
     politi.style.position = 'absolute';
-    politi.style.marginTop = 485 + 'px';
+    politi.style.marginTop = 497 + 'px';
     politi.style.marginLeft = 600 + 'px';
     politi.style.float = 'right';
     politi.style.display = 'visible';
+    politi.style.width = '-15%';
+    game.appendChild(politi);
     var pos = 0;
-    var id = setInterval(frame, 1);
+    var id = setInterval(frame, 2);
 
     function frame() {
       if (pos == 900) {
         clearInterval(id);
-        game.removeChild(politi);
+        setTimeout(function(){
+        game.removeChild(politi);}, 1000);
       } else {
         pos++;
         politi.style.right = pos + 'px';
       }
     }
-    game.appendChild(politi);
   };
 }
 
-function Gutt(divId) {
+function Gutt() {
 
-  this.id = divId;
+  this.draw = function() {
+    var gutt = document.createElement('img');
 
-  var gutt = document.createElement('img');
+    gutt.setAttribute('id', 'gutt');
+    gutt.setAttribute('src', 'img/gutt.png');
+    gutt.setAttribute('draggable', 'false');
+    gutt.style.position = 'absolute';
+    gutt.style.marginTop = 220 + 'px';
+    gutt.style.marginLeft = -200 + 'px';
+    gutt.style.width = 130 + 'px';
+    gutt.style.display = 'visible';
 
-  gutt.setAttribute('id', 'gutt' + this.id);
-  gutt.setAttribute('src', 'img/gutt.png');
-  gutt.setAttribute('draggable', 'false');
-  gutt.style.position = 'absolute';
-  gutt.style.marginTop = 220 + 'px';
-  gutt.style.marginLeft = -200 + 'px';
-  gutt.style.width = 130 + 'px';
-  gutt.style.display = 'visible';
+    game.appendChild(gutt);
 
-  game.appendChild(gutt);
+    var snakkeboble = document.createElement('img');
+    snakkeboble.setAttribute('id', 'snakkeboble');
+    snakkeboble.setAttribute('src', 'img/snakkeboble.png');
+    snakkeboble.setAttribute('draggable', 'false');
+    snakkeboble.style.position = 'absolute';
+    snakkeboble.style.marginTop = 100 + 'px';
+    snakkeboble.style.marginLeft = -180 + 'px';
+    snakkeboble.style.width = 200 + 'px';
+    snakkeboble.style.float = 'left';
+    snakkeboble.style.display = 'inline-block';
 
-  var snakkeboble = document.createElement('img');
-  snakkeboble.setAttribute('id', 'snakkeboble' + this.id);
-  snakkeboble.setAttribute('src', 'img/snakkeboble.png');
-  snakkeboble.setAttribute('draggable', 'false');
-  snakkeboble.style.position = 'absolute';
-  snakkeboble.style.marginTop = 100 + 'px';
-  snakkeboble.style.marginLeft = -180 + 'px';
-  snakkeboble.style.width = 200 + 'px';
-  snakkeboble.style.float = 'left';
-  snakkeboble.style.display = 'inline-block';
+    game.appendChild(snakkeboble);
 
-  game.appendChild(snakkeboble);
 
-  var quotes = document.createElement('div');
 
-  var quoteslist = ["MAN.. HERE COMES THE POPO TO TELL US WHAT TO DO AGAIN", "IT'S THE POPO IN SLOW MO!", "FIVE-O! FIVE-O! FIVE-O! FIVE-O!", "PUT THAT BLUNT OUT, FIVE-O, FIVE-O!"];
-  var quote = document.getElementById('quotes');
-  quote.innerHTML = quoteslist[Math.floor(Math.random() * quoteslist.length)];
-  game.appendChild(quote);
-  drawPoliti();
-
+    var quotes = document.createElement('div');
+    quotes.setAttribute('id', 'quotes');
+    var quoteslist = ["MAN.. HERE COMES THE POPO TO TELL US WHAT TO DO AGAIN", "IT'S THE POPO IN SLOW MO!", "FIVE-O! FIVE-O! FIVE-O! FIVE-O!", "PUT THAT BLUNT OUT, FIVE-O, FIVE-O!"];
+    var quote = document.getElementById('quotes');
+    quote.innerHTML = quoteslist[Math.floor(Math.random() * quoteslist.length)];
+    game.appendChild(quote);
+  };
 }
 
 function drawPoliti() {
-  var imgPoliti = new Politi(divId);
+  var imgPoliti = new Politi();
   imgPoliti.draw();
 }
 
 function drawGutt() {
-  var imgGutt = new Gutt(divId);
-
+  var imgGutt = new Gutt();
+  imgGutt.draw();
+setTimeout(function(){
+drawPoliti();}, 1000);
 }
