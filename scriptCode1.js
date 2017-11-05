@@ -33,10 +33,15 @@ function drawTimer() {
     if (time > 0) {
       time--;
       timerH1.innerHTML = 'Time: ' + time;
-    } else {
+    } else if(time == 0) {
       clearInterval(timerInterval);
-      alert('Game over! Your score was ' + score);
-      score = 0;
+        var vinn = document.createElement('div');
+        vinn.setAttribute('id', 'vinn');
+        vinn.style.backgroundImage = 'url("img/plante.gif")';
+        vinn.style.width = 900 + 'px';
+        vinn.style.height = 400 + 'px';
+        vinn.style.position = 'absolute';
+        game.appendChild(vinn);
       scoreBoardUpdate();
     }
   }, 1000);
@@ -55,7 +60,7 @@ function scoreBoardUpdate(change) {
   }
   scoreH1.innerHTML = "Score: " + score;
 }
-// Object creating
+// Definerer hvordan en plante skal tegnes og starter timer
 
 function Weed(divId) {
   this.id = divId;
@@ -71,13 +76,15 @@ function Weed(divId) {
     weed.style.marginLeft = Math.random() * 600 + 'px';
 
     game.appendChild(weed);
-    weedTimer(weed);
+    if (time > 0){
+      weedTimer(weed);
+    }
   };
 }
 
 
 var weedTimeout;
-
+// Timerfunksjon for hver plante med tilfeldig levetid
 function weedTimer(weed) {
   weedTimeout = setTimeout(function() {
     deleteWeed(weed, '-');
@@ -85,36 +92,41 @@ function weedTimer(weed) {
 
 }
 
-
-function weedClick(weed) {
+// Funksjon som kjører hver gang en plante blir trykket på, resetter timer og gir 1 poeng
+function weedClick(weed, change) {
+  if (document.getElementById('politi') != null){
+    clearTimeout(weedTimeout);
+    deleteWeed(weed, '-');
+  }
   clearTimeout(weedTimeout);
   deleteWeed(weed, '+');
 }
 
-
+// Tegner plante og begynner drawGutt(); hvis if condition er riktig
 function drawWeed() {
   var divText = new Weed(divId);
   divText.draw();
-  if (document.getElementById('politi') != null) {
-    game.removeChild(document.getElementById('gutt'));
-    game.removeChild(document.getElementById('snakkeboble'));
-    document.getElementById('quotes').innerHTML = '';
+  if (time < 25 && (Math.random() * (2000 - 1000) + 1000) < 1200 && document.getElementById('politi') == null) {
+    drawGutt();
   } else {
-    if (time < 25 && (Math.random() * (2000 - 1000) + 1000) < 1200 && document.getElementById('politi') == null) {
-      drawGutt();
+    if (document.getElementById('politi') != null && document.getElementById('gutt') != null && document.getElementById('snakkeboble') != null ) {
+      game.removeChild(document.getElementById('gutt'));
+      game.removeChild(document.getElementById('snakkeboble'));
+      document.getElementById('quotes').innerHTML = '';
+
     }
   }
 }
 
-
-function deleteWeed(weed, change) {
+// Funksjon for å fjerne weed-diven og tegner ny weed-div
+function deleteWeed(weed,change) {
   game.removeChild(weed);
   scoreBoardUpdate(change);
   divId++;
   drawWeed();
 }
-
-function Politi(divId) {
+// Definerer hvordan en politibil skal tegnes
+function Politi() {
 
 
 
@@ -145,7 +157,7 @@ function Politi(divId) {
     }
   };
 }
-
+// Definerer hvordan gutt, snakkeboble og tekst skal tegnes
 function Gutt() {
 
   this.draw = function() {
@@ -185,12 +197,12 @@ function Gutt() {
     game.appendChild(quote);
   };
 }
-
+// Tegner en politibil
 function drawPoliti() {
   var imgPoliti = new Politi();
   imgPoliti.draw();
 }
-
+// Tegner en gutt og kaller drawPoliti() setTimeout slik at den starter ett sekund etter gutten
 function drawGutt() {
   var imgGutt = new Gutt();
   imgGutt.draw();
