@@ -58,6 +58,7 @@ function drawTimer() {
     else {
       // Sørger for at gutten, snakkeboble og politi blir fjernet.
       if(document.getElementById('weed'+ divId) != null ) {
+        clearTimeout(weedTimeout)
         game.removeChild(document.getElementById('weed'+ divId))
       }
       else if (document.getElementById('gutt') != null) {

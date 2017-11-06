@@ -19,30 +19,21 @@
 	font-family: Arcadefont;
 	src: url('duckhunt.ttf');
 }
-#scoreboard {
-	font-family: Arcadefont, arial-serif;
-	font-size: 50px;
-	color: black;
-	float: right;
-
-}
-
-#timerboard {
-	font-family: Arcadefont, arial-serif;
-	font-size: 50px;
-	color: black;
-	float: left;
-
-}
-
-#weedH1 {
+.header1 {
 	font-family: Arcadefont, arial-serif;
 	text-align: center;
 	font-size: 50px;
 	color: black;
 }
+#scoreboard {
+	float: right;
+}
+
+#timerboard {
+	float: left;
+}
+
 #quotes {
-	font-family: Arcadefont, arial-serif;
 	display: inline-block;
 	margin-top: 115px;
 	margin-left: -140px;
@@ -57,25 +48,44 @@
 	margin-left: 350px;
 }
 #starth1 {
-	font-family: Arcadefont, arial-serif;
-	text-align: center;
 	font-size: 50px;
-	color: black;
 	margin-top: 25px;
 }
 #tittelh1 {
-	font-family: Arcadefont, arial-serif;
-	text-align: center;
 	font-size: 75px;
-	color: black;
 	margin-top: 100px;
 }
-#snakkeboble {
 
+#snakkeboble {
 	position: absolute;
 	margin-top: 40px;
 	margin-left: -60px;
 	width: 300px;
 	float: left;
 	display: inline-block;
+}
+
+
+
+.weed {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    margin-top: 400px;
+}
+
+#politi {
+    position: absolute;
+    margin-top: 497px;
+    margin-left: 600px;
+    float: right;
+    display: inherit;
+    width: -15%;
+}
+
+#gutt {
+    position: absolute;
+    margin-top: 220px;
+    margin-left: -200px;
+    display: visible;
 }
