@@ -2,6 +2,17 @@ var time = 30;
 var score = 0;
 var divId = 0;
 
+//Lager restartknapp
+var restarth1 = document.createElement('h1');
+restarth1.setAttribute('id', 'restarth1');
+restarth1.setAttribute('class', 'header1');
+var restarttekst = document.createTextNode("START PÅ NYTT");
+restarth1.appendChild(restarttekst);
+var restartknapp = document.createElement('button');
+restartknapp.setAttribute('onclick', 'startFunc()');
+restartknapp.setAttribute('id', 'restartknapp');
+restartknapp.appendChild(restarth1);
+
 //Henter game-, timerh1-, og score-elementer
 var game = document.getElementById('game');
 var timerH1 = document.getElementById('timerboard');
@@ -20,6 +31,7 @@ tittelh1.setAttribute('class', 'header1');
 var titteltekst = document.createTextNode("SNOOP'S HUNT");
 tittelh1.appendChild(titteltekst);
 game.appendChild(tittelh1);
+
 var starth1 = document.createElement('h1');
 starth1.setAttribute('id', 'starth1');
 starth1.setAttribute('class', 'header1');
@@ -35,13 +47,32 @@ startknapp.setAttribute('id', 'startknapp');
 startknapp.appendChild(starth1);
 game.appendChild(startknapp);
 
-// Sørger for at alle funksjoner kjører
+// Sørger for at alle funksjoner kjører og resetter spillet
 function startFunc() {
+  if (document.getElementById('startknapp') != null){
   game.removeChild(startknapp);
   game.removeChild(tittelh1);
   drawTimer();
   drawWeed();
   scoreBoardUpdate();
+} else {
+  game.removeChild(restartknapp);
+  time = 30;
+  score = 0;
+  drawTimer();
+  drawWeed();
+  scoreBoardUpdate();
+  timerH1.style.display = 'inline';
+  scoreH1.style.display = 'inline';
+  if (document.getElementById('startknapp') != null){
+    game.removeChild(vinn);
+  } else {
+    game.removeChild(tap);
+  }
+
+}
+
+
 }
 
 // Timer funksjon
@@ -86,6 +117,7 @@ function drawTimer() {
         vinn.appendChild(vinnh1);
 
         game.appendChild(vinn);
+        game.appendChild(restartknapp);
       }
       else { // Lager tap tekst og skriver den ut til game div-en
         var tap = document.createElement('div');
@@ -101,6 +133,8 @@ function drawTimer() {
         tap.appendChild(taph1);
 
         game.appendChild(tap);
+        game.appendChild(restartknapp);
+
       } //Avslutter score sjekk if-setningen
     } // Avslutter timer if-setningen
   }, 1000); // Avslutter timerInterval
@@ -134,28 +168,32 @@ function Weed(divId) {
     game.appendChild(weed);
     if (time > 0) {
       weedTimer(weed);
-    }
-  };
-}
+    } //Avslutter timer sjekk if-setningen
+  }; //Avslutter draw-funksjonen
+} //Avslutter hele tegne-funksjonen
 
 
 var weedTimeout;
-// Timerfunksjon for hver plante med tilfeldig levetid
+// Timerfunksjon for hver plante med tilfeldig levetid r
+// Avslutter timeren hvis gutt finnes
 function weedTimer(weed) {
   weedTimeout=setTimeout(function() {
-    if (document.getElementById('gutt') != null ) {
+    if (document.getElementById('gutt') != null) {
       clearTimeout(weedTimeout);
-    }
-    else {
+    } //Avslutter gutt sjekk if-setningen
+    else { //Gjør at man mister poeng hvis en plante forsvinner
+           // før man trykker på den
       clearTimeout(weedTimeout);
       deleteWeed(weed, '-');
-    }
+    } //Avslutter gutt sjekk else-setningen
   }, Math.random() * (4000 - 1500) + 1500);
 
 }
 
 
-// Funksjon som kjører hver gang en plante blir trykket på, resetter timer og gir 1 poeng
+// Funksjon som kjører hver gang en plante blir trykket på,
+// resetter timer og gir 1 poeng, med mindre snakkeboblen finnes,
+// da blir det minus 1 poeng
 function weedClick(weed, change) {
   if (document.getElementById('snakkeboble') != null && time > 0) {
     deleteWeed(weed, '-');
@@ -240,7 +278,7 @@ function Snakkeboble() {
 };
 }
 
-// Tegner en politibil
+// Tegner en politibil og Snakkeboble
 function drawPoliti() {
   var imgPoliti = new Politi();
   imgPoliti.draw();
@@ -250,7 +288,7 @@ function drawSnakkeboble() {
   imgSnakkeboble.draw();
 }
 
-// Tegner en gutt og kaller drawPoliti() setTimeout slik at den starter ett sekund etter gutten
+// Tegner en gutt og kaller drawPoliti() setTimeout slik at den starter tre sekunder etter gutten
 function drawGutt() {
 
   var imgGutt = new Gutt();
