@@ -40,7 +40,18 @@
 	width: 130px;
 	position: absolute;
 }
-#startknapp{
+#restartknapp {
+	background-color: red;
+	width: 200px;
+	height: 100px;
+	margin-top: 250px;
+	margin-left: 350px;
+}
+#restarth1 {
+	font-size: 40px;
+	margin-top: 10px;
+}
+#startknapp {
 	background-color: red;
 	width: 200px;
 	height: 100px;
