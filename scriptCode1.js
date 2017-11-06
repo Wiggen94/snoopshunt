@@ -14,7 +14,7 @@ game.oncontextmenu = function() {
 };
 var tittelh1 = document.createElement('h1');
 tittelh1.setAttribute('id', 'tittelh1');
-tittelh1.setAttribute('class', 'header1')
+tittelh1.setAttribute('class', 'header1');
 
 
 var titteltekst = document.createTextNode("SNOOP'S HUNT");
@@ -54,12 +54,12 @@ function drawTimer() {
     if (time > 0) {
       time--;
       timerH1.innerHTML = 'Time: ' + time;
-    } 
+    }
     else {
       // Sørger for at gutten, snakkeboble og politi blir fjernet.
       if(document.getElementById('weed'+ divId) != null ) {
-        clearTimeout(weedTimeout)
-        game.removeChild(document.getElementById('weed'+ divId))
+        clearTimeout(weedTimeout);
+        game.removeChild(document.getElementById('weed'+ divId));
       }
       else if (document.getElementById('gutt') != null) {
         game.removeChild(gutt);
@@ -67,7 +67,7 @@ function drawTimer() {
         game.removeChild(quoteslists);
       }
       // fjerner weeden, timer og scoren når spillet er ferdig.
-      
+
       clearInterval(timerInterval);
       timerH1.style.display = 'none';
       scoreH1.style.display = 'none';
@@ -75,7 +75,7 @@ function drawTimer() {
       if(score >= 10) { // Lager vinn tekst og skriver den ut til game div-en
         var vinn = document.createElement('div');
         vinn.setAttribute('id', 'vinn');
-        
+
         var vinnTekst = document.createTextNode('Du vant! Scoren din ble ' + score);
 
         var vinnh1 = document.createElement('h1');
@@ -90,7 +90,7 @@ function drawTimer() {
       else { // Lager tap tekst og skriver den ut til game div-en
         var tap = document.createElement('div');
         tap.setAttribute('id', 'tap');
-        
+
         var tapTekst = document.createTextNode('Du tapte! Scoren din ble ' + score + '. Prøv igjen.');
 
         var taph1 = document.createElement('h1');
@@ -139,19 +139,19 @@ function Weed(divId) {
 }
 
 
-var weedTimeout
+var weedTimeout;
 // Timerfunksjon for hver plante med tilfeldig levetid
 function weedTimer(weed) {
   weedTimeout=setTimeout(function() {
     if (document.getElementById('gutt') != null ) {
-      clearTimeout(weedTimeout)
-    } 
+      clearTimeout(weedTimeout);
+    }
     else {
       clearTimeout(weedTimeout);
       deleteWeed(weed, '-');
     }
   }, Math.random() * (4000 - 1500) + 1500);
- 
+
 }
 
 
@@ -172,7 +172,7 @@ function drawWeed() {
   weed.draw();
   if (time < 25 && (Math.random() * (2000 - 1000) + 1000) < 1200 && document.getElementById('gutt') == null) {
     drawGutt();
-  } 
+  }
 }
 
 // Funksjon for å fjerne weed-diven og tegner ny weed-div
@@ -204,7 +204,7 @@ function Politi() {
           game.removeChild(politi);
           game.removeChild(quotes);
           game.removeChild(gutt);
-          weedTimer(document.getElementById('weed'+divId))
+          weedTimer(document.getElementById('weed'+divId));
         }, 1);
       } else {
         pos += 5;
@@ -231,7 +231,7 @@ function Snakkeboble() {
     var quotes = document.createElement('div');
     quotes.setAttribute('id', 'quotes');
     var quoteslist = ['img/1.png', 'img/2.png', 'img/3.png','img/4.png']; //your assumed array
- 
+
     var img = document.createElement('img');
     img.setAttribute('id', 'snakkeboble');
     img.src = quoteslist[Math.floor(Math.random() * quoteslist.length)];
