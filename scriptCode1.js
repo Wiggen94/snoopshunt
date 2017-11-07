@@ -11,6 +11,7 @@ restarth1.appendChild(restarttekst);
 var restartknapp = document.createElement('button');
 restartknapp.setAttribute('onclick', 'startFunc()');
 restartknapp.setAttribute('id', 'restartknapp');
+restartknapp.setAttribute('class', 'knapp');
 restartknapp.appendChild(restarth1);
 
 //Henter game-, timerh1-, og score-elementer
@@ -41,6 +42,7 @@ starth1.appendChild(starttekst);
 var startknapp = document.createElement('button');
 startknapp.setAttribute('onclick', 'startFunc()');
 startknapp.setAttribute('id', 'startknapp');
+startknapp.setAttribute('class', 'knapp');
 
 
 
@@ -64,7 +66,7 @@ function startFunc() {
   scoreBoardUpdate();
   timerH1.style.display = 'inline';
   scoreH1.style.display = 'inline';
-  if (document.getElementById('startknapp') != null){
+  if (document.getElementById('vinn') != null){
     game.removeChild(vinn);
   } else {
     game.removeChild(tap);
@@ -88,15 +90,16 @@ function drawTimer() {
     }
     else {
       // Sørger for at gutten, snakkeboble og politi blir fjernet.
+      if (document.getElementById('gutt') != null) {
+        game.removeChild(gutt);
+        game.removeChild(politi);
+        game.removeChild(quotes);
+      }
       if(document.getElementById('weed'+ divId) != null ) {
         clearTimeout(weedTimeout);
         game.removeChild(document.getElementById('weed'+ divId));
       }
-      else if (document.getElementById('gutt') != null) {
-        game.removeChild(gutt);
-        game.removeChild(politi);
-        game.removeChild(quoteslists);
-      }
+      
       // fjerner weeden, timer og scoren når spillet er ferdig.
 
       clearInterval(timerInterval);
@@ -268,8 +271,7 @@ function Snakkeboble() {
   this.draw = function() {
     var quotes = document.createElement('div');
     quotes.setAttribute('id', 'quotes');
-    var quoteslist = ['img/1.png', 'img/2.png', 'img/3.png','img/4.png']; //your assumed array
-
+    var quoteslist = ['img/1.png', 'img/2.png', 'img/3.png','img/4.png'];
     var img = document.createElement('img');
     img.setAttribute('id', 'snakkeboble');
     img.src = quoteslist[Math.floor(Math.random() * quoteslist.length)];
@@ -288,7 +290,7 @@ function drawSnakkeboble() {
   imgSnakkeboble.draw();
 }
 
-// Tegner en gutt og kaller drawPoliti() setTimeout slik at den starter tre sekunder etter gutten
+// Tegner en gutt og kaller drawPoliti() setTimeout slik at den starter to sekunder etter gutten
 function drawGutt() {
 
   var imgGutt = new Gutt();
@@ -300,5 +302,5 @@ function drawGutt() {
 
   setTimeout(function() {
     drawPoliti();
-  }, 3000);
+  }, 2000);
 }
