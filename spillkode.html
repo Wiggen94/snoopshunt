@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html>
+<html lang="no">
+
+<head>
+  <meta charset="utf-8">
+  <title>Spilkode</title>
+  <!-- Link til CSS -->
+  <link rel="stylesheet" type="text/css" href="style5.css" />
+  <!-- Link til font -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  <!-- Link til Google Prettify; innebygd skript for en penere koderepresentasjon,
+  URL: https://github.com/google/code-prettify -->
+  <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+
+  <!-- BOOTSTRAP -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+  <!-- NAVIGATION BAR -->
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a href="#"> <img  class="logo" src="img/weed.png" alt="logo" border:"0" width="24px" height="24px"> </a>
+        <a class="navbar-brand" href="spillbootstrap.html">Snoop Prog</a>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li><a href="spillbootstrap.html">Snoop's Hunt</a></li>
+          <li><a href="omoss.html">Om oss</a></li>
+          <li class="active"><a href="spillkode.html">Spillkode</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- SPILLKODE -->
+  <div class="kode">
+    <h3 class="kodeh3">HTML</h2>
+    <h3 class="kodeh3">CSS</h3>
+    <h3 class="kodeh3">Javascript</h3>
+
+    <div class="kodeblokker">
+
+      <!-- HTML KODE -->
+      <div class="kodeblokkhtml">
+        <pre class="prettyprint lang-html"><xmp>
+          <!DOCTYPE html>
+          <html>
+          <html lang="no">
+
+          <head>
+
+            <meta charset="utf-8">
+            <title>Snoop's Hunt</title>
+            <!-- Link til CSS -->
+            <link rel="stylesheet" type="text/css" href="style5.css" />
+            <!-- Link til Spill-CSS -->
+            <link rel="stylesheet" type="text/css" href="snoopshunt/gameCss.css">
+            <!-- Link til font -->
+            <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+            <!-- Link til funksjoner "//-" -->
+            <script src="snoopshunt.js"></script>
+
+
+            <!-- BOOTSTRAP -->
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+          </head>
+
+          <body>
+
+
+
+            <!-- NAVIGATION BAR -->
+            <nav class="navbar navbar-inverse">
+              <div class="container-fluid">
+                <div class="navbar-header">
+                  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </button>
+                  <a href="#"> <img  class="logo" src="img/weed.png" alt="logo" border:"0" width="23px" height="23px"> </a>
+                  <a class="navbar-brand" href="#">Snoop Prog</a>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                  <ul class="nav navbar-nav">
+                    <li class="active"><a href="spillbootstrap.html">Snoop's Hunt</a></li>
+                    <li><a href="omoss.html">Om oss</a></li>
+                    <li><a href="spillkode.html">Spillkode</a></li>
+                  </ul>
+                </div>
+              </div>
+            </nav>
+
+
+
+            <!-- OVERSKRIFT -->
+            <div align="center">
+              <h1 class="snoopshuntheader" id="snoopshuntheader">Snoop's Hunt</h1>
+            </div>
+
+            <!-- SPILL -->
+            <div id="game">
+              <h1 id="timerboard"></h1>
+              <h1 id="scoreboard"></h1>
+            </div>
+
+            <script type="text/javascript" src="snoopshunt/scriptCode1.js">
+            </script>
+
+            <!-- DARK MODE KNAPP -->
+            <div align="center" class="darkmodebutton">
+              <button class="darkmode" onclick="lysbryter();"> <img id="myimg" src="img/switch-off.png" height="50px" width="50px"> </button>
+            </div>
+
+          </body>
+
+          </html>
+
+        </div>
+      </xmp> </pre> </div>
+
+      <!-- CSS KODE -->
+      <div class="kodeblokkcss">
+        <code class="prettyprint lang-css">
+          .logo {
+            position: relative;
+            display: inline-block;
+            margin-top: 13px;
+            margin-left: -8px;
+          }
+
+          .navbar-inverse {
+            background-color: #1d1f21 !important;
+          }
+
+          .navbar-brand {
+            font-family: 'Open Sans', sans-serif;
+          }
+
+          .active {
+            font-family: 'Open Sans', sans-serif;
+          }
+
+          .nav a {
+            font-size: 1.2em !important;
+          }
+
+          a {
+            text-align: right;
+          }
+
+          .navbar .navbar-nav {
+            float: right;
+            vertical-align: top;
+          }
+
+          .navbar .navbar-collapse {
+            text-align: right;
+          }
+
+          //
+          body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Open Sans', sans-serif;
+          }
+
+          .omossheader {
+            margin-top: 0%;
+            margin-bottom: 2.5%;
+          }
+
+          .omosstekst {
+            width: 40%;
+            line-height: 200%;
+          }
+
+          p {
+            display: inline-block;
+            text-align: center;
+          }
+
+          .kodeh3 {
+            display: inline-block;
+            text-align: center;
+            width: 33%;
+            margin-top: 1.6%;
+            margin-bottom: 2.9%;
+            float: left;
+          }
+
+          .darkmode {
+            position: absolute;
+            background-color: transparent;
+            border: none;
+            outline: none;
+          }
+
+          .darkmodebutton {
+            border: none;
+            outline: none;
+          }
+
+          .growup {
+            border: 0;
+          }
+
+          .arrow {
+            margin-top: 1.5%;
+          }
+
+          .redirect {
+            background-image: url("img/snoopwallpaper.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+          }
+
+          .forungtekst {
+            background-color: black;
+            background-color: rgba(0, 0, 0, 0.5);
+          }
+
+          .blankh2 {
+            color: white;
+          }
+
+          .kodeblokkcss {
+            width: 30%;
+            max-height: 60vh;
+            overflow-y: scroll;
+            overflow-x: hidden;
+            border: 0;
+            display: inline-block;
+            margin-left: 3.8%;
+            vertical-align: top;
+          }
+
+          .kodeblokkjs {
+            width: 30%;
+            max-height: 60vh;
+            overflow-y: scroll;
+            overflow-x: hidden;
+            border: 0;
+            display: inline-block;
+            vertical-align: top;
+            float: right;
+            margin-right: 1.7%;
+          }
+
+          .kodeblokkhtml {
+            width: 30%;
+            max-height: 60vh;
+            overflow-y: scroll;
+            overflow-x: hidden;
+            border: 0;
+            float: left;
+            vertical-align: top;
+            margin-left: 2%;
+          }
+
+          .prettyprint.lang-css.prettyprinted {
+            text-align: left;
+            padding: 0px;
+            max-width: 100%;
+            white-space: pre-line;
+            margin: 0;
+          }
+
+          .prettyprint.lang-html.prettyprinted {
+            text-align: left;
+            padding: 0px;
+            margin: 0;
+            max-width: 100%;
+          }
+
+          .prettyprint.lang-js.prettyprinted {
+            text-align: left;
+            padding: 0px;
+            margin: 0;
+            max-width: 100%;
+            white-space: pre-line;
+          }
+
+          xmp {
+            max-width: 100%;
+            white-space: pre-line;
+            margin: 0;
+            line-height: 2em;
+          }
+
+          .kode {
+            float: left;
+            margin: 0;
+            border: 0;
+          }
+
+          #game {
+            margin: auto;
+          }
+
+          .snoopshuntheader {
+            font-family: Arcadefont;
+          	src: url('/snoopshunt/duckhunt.ttf');
+             margin-top: 2.2%;
+          }
+
+</code> </div>
+
+      <!-- JAVASCRIPT KODE -->
+      <div class="kodeblokkjs">
+        <code class="prettyprint lang-js">
+          //AGE VERIFICATION
+          window.onLoad = checkage()
+          function checkage() {
+            var agePrompt = prompt("Hvor gammel er du?");
+
+            if (agePrompt >= 16) {
+              alert('Velkommen!')
+            } else {
+              alert('Beklager, du er for ung til å spille Snoops\' Hunt')
+              document.location = "https://google.com";
+            }
+          }
+
+
+              //DARK MODE
+              var img_array = ['img/switch-on.png', 'img/switch-off.png']
+              var i = -1;
+
+              function lysbryter() {
+                if (i == 0) {
+                  i++
+                  document.getElementById("myimg").src = img_array[i];
+                  document.body.style.backgroundColor = "white";
+                  document.getElementById('snoopshuntheader').style.color = 'black';
+                } else {
+                  i = 0
+                  document.getElementById("myimg").src = img_array[i];
+                  document.body.style.backgroundColor = "#1d1f21";
+                  document.getElementById('snoopshuntheader').style.color = '#1d1f21';
+                }
+              }
+
+ </code> </div>
+ 
+    </div>
+    <div class="snoopfooter">
+      <p>© Snoop Prog Inc.</p>
+    </div>
+
+</html>
