@@ -1,3 +1,4 @@
+/* styler game diven */
 #game {
 	background-image: url('../img/dh2.png');
 	background-repeat: no-repeat;
@@ -14,50 +15,22 @@
 	-ms-user-select: none; /* IE10+/Edge */
 	user-select: none; /* Standard */
 }
-
+/* sørger for bruk av ekstarn font */
 @font-face {
 	font-family: Arcadefont;
 	src: url('duckhunt.ttf');
 }
+
+/* fast style for alle h1 elementer som vi lager */
 .header1 {
 	font-family: Arcadefont, arial-serif;
 	text-align: center;
 	font-size: 50px;
 	color: black;
 }
-
-#scoreboard {
-	float: right;
-}
-
-#timerboard {
-	float: left;
-}
-
-#quotes {
-	display: inline-block;
-	margin-top: 115px;
-	margin-left: -140px;
-	width: 130px;
-	position: absolute;
-}
-.knapp {
-	margin-top: 200px;
-	margin-left: 350px;
-	background-color: red;
-}
-#startknapp {
-	width: 200px;
-	height: 100px;
-}
-
+/* Unik egenskaper for hver h1 */
 #restarth1 {
 	margin: 10px auto;
-}
-
-#restartknapp {
-	width: 200px;
-	height: 200px;
 }
 
 #starth1 {
@@ -68,7 +41,46 @@
 	font-size: 75px;
 	margin-top: 100px;
 }
+#vinnh1 {
 
+}
+/* plassering til timer og score */
+#scoreboard {
+	float: right;
+}
+
+#timerboard {
+	float: left;
+}
+
+/* plassering av qoutes div, som inneholder snakkebobler bilder */
+#quotes {
+	display: inline-block;
+	margin-top: 115px;
+	margin-left: -140px;
+	width: 130px;
+	position: absolute;
+}
+
+/* Gir fast style til alle knapper som vi lager */
+.knapp {
+	margin-top: 200px;
+	margin-left: 350px;
+	background-color: red;
+}
+
+/* Unike egenskaper for hver knapp */
+#startknapp {
+	width: 200px;
+	height: 100px;
+}
+
+#restartknapp {
+	width: 200px;
+	height: 200px;
+}
+
+/* Styler plasseringen til snakkeboble bilder, som er inni qoutes  diven */
 #snakkeboble {
 	position: absolute;
 	margin-top: 40px;
@@ -79,7 +91,7 @@
 }
 
 
-
+/* sørger for at hver plante er like stor, og plassert på samme 'y-akse' */
 .weed {
     width: 100px;
     height: 100px;
@@ -87,6 +99,7 @@
     margin-top: 400px;
 }
 
+/* Gir politi bilen style og plassering */
 #politi {
     position: absolute;
     margin-top: 497px;
@@ -96,9 +109,18 @@
     width: -15%;
 }
 
+/* Gir gutten style of plassering */
 #gutt {
     position: absolute;
     margin-top: 220px;
     margin-left: -200px;
     display: visible;
+}
+
+/* styler snoop gif-en */
+#snoopWin {
+	float: right;
+	position: absolute;
+	margin-top: 255px;
+	margin-left: 25px;
 }
