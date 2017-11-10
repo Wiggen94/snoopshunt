@@ -191,26 +191,27 @@ function drawTimer() {
 function scoreBoardUpdate(change) {
   switch (change) {
     case '+':
-      score++;
       if (is_safari) {
+        score++;
         return;
       } else {
+        score++;
         plussLyd.play();
       }
       break;
     case '-':
-      score--;
       if (is_safari) {
-        return;
+        score--;
       } else {
+        score--;
         minusLyd.play();
       }
       break;
     case '3':
-      score -= 3;
       if (is_safari) {
-        return;
+        score -= 3;
       } else {
+        score -= 3;
         minusLyd.play();
       }
   }
@@ -255,10 +256,10 @@ function weedTimer(weed) {
 
 
 // Funksjon som kjører hver gang en plante blir trykket på,
-// resetter timer og gir 1 poeng, med mindre snakkeboblen finnes,
+// resetter timer og gir 1 poeng, med mindre politibil finnes,
 // da blir det minus 3 poeng
 function weedClick(weed, change) {
-  if (document.getElementById('snakkeboble') != null && time > 0) {
+  if (document.getElementById('politi') != null && time > 0) {
     clearTimeout(weedTimeout);
     deleteWeed(weed, '3');
   } else {
