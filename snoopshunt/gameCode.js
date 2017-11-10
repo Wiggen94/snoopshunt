@@ -6,6 +6,16 @@ var divId = 0;
 // lyder for pluss og minus poeng
 var is_safari = navigator.userAgent.indexOf("Safari") > -1;
 
+// Sjekker om brukeren bruker safari nettleser. Brukes for å angi om den skal spille av lyd i scoreBoardUpdate.
+var ua = navigator.userAgent.toLowerCase(); 
+if (ua.indexOf('safari') != -1) { 
+  if (ua.indexOf('chrome') > -1) {
+    is_safari = false;
+  } else {
+    is_safari = true;
+  }
+}
+
 var minusLyd = new Audio('snoopshunt/minuspoeng.mp3');
 var plussLyd = new Audio('snoopshunt/plusspoeng.mp3');
 
@@ -195,24 +205,30 @@ function scoreBoardUpdate(change) {
         score++;
       } else {
         score++;
+      	plussLyd.load();
         plussLyd.play();
       }
+      
       break;
     case '-':
       if (is_safari) {
         score--;
       } else {
         score--;
+        minusLyd.load();
         minusLyd.play();
       }
+        
       break;
     case '3':
       if (is_safari) {
         score -= 3;
       } else {
         score -= 3;
+        minusLyd.load();
         minusLyd.play();
       }
+       
   }
   scoreH1.innerHTML = "Score: " + score;
 }
