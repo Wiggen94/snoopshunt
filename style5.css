@@ -1,16 +1,18 @@
+/* DET ER BRUKT !important FLERE STEDER FOR Å OVERSTYRE BOOTSTRAP-CSS.*/
 h1 {
 	font-family: Arcadefont, arial-serif !important;
 	text-align: center !important;
 	font-size: 50px !important;
 	color: black !important;
 }
+/* CSS-egenskaper til logo */
 .logo {
   position: relative;
   display: inline-block;
   margin-top: 13px;
   margin-left: -8px;
 }
-
+/* CCS-egenskaper til navigasjonsmenyen */
 .navbar-inverse {
   background-color: #1d1f21 !important;
 }
@@ -39,13 +41,17 @@ a {
 .navbar .navbar-collapse {
   text-align: right;
 }
-
+/* CSS-egenskaper til body */
 body {
   margin: 0;
   padding: 0;
   font-family: 'Open Sans', sans-serif;
 }
-
+/* CSS-egenskaper for å midtstille spillet*/
+#game {
+  margin: auto;
+}
+/* CSS-egenskaper til om oss siden */
 .omossheader {
   margin-top: 0%;
   margin-bottom: 2.5%;
@@ -55,12 +61,12 @@ body {
   width: 40%;
   line-height: 200%;
 }
-
+/* Generelle CSS-egenskaper til p-taggen */
 p {
   display: inline-block;
   text-align: center;
 }
-
+/* Overskrift på spillkode-siden */
 .kodeh3 {
   display: inline-block;
   text-align: center;
@@ -69,42 +75,18 @@ p {
   margin-bottom: 2.9%;
   float: left;
 }
-
+/* CSS-egenskaper til spillmodusknappen */
 .darkmodebutton {
   position: relative;
   background-color: transparent;
   border: none;
   outline: none;
 }
-
 .darkmode {
   border: none;
   outline: none;
 }
-
-.growup {
-  border: 0;
-}
-
-.arrow {
-  margin-top: 1.5%;
-}
-
-.redirect {
-  background-image: url("img/snoopwallpaper.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
-.forungtekst {
-  background-color: black;
-  background-color: rgba(0, 0, 0, 0.5);
-}
-
-.blankh2 {
-  color: white;
-}
-
+/* CSS-egenskaper til CSS-kodeblokken på spillkode-siden */
 .kodeblokkcss {
   width: 30%;
   max-height: 60vh;
@@ -115,7 +97,7 @@ p {
   margin-left: 3.8%;
   vertical-align: top;
 }
-
+/* CSS-egenskaper til javascript-kodeblokken på spillkode-siden */
 .kodeblokkjs {
   width: 30%;
   max-height: 60vh;
@@ -127,7 +109,7 @@ p {
   float: right;
   margin-right: 1.7%;
 }
-
+/* CSS-egenskaper til HTML-kodeblokken på spillkode-siden */
 .kodeblokkhtml {
   width: 30%;
   max-height: 60vh;
@@ -138,7 +120,7 @@ p {
   vertical-align: top;
   margin-left: 2%;
 }
-
+/* CSS-egenskaper til tekst i kodeblokkene for å få lik utforming */
 .prettyprint.lang-css.prettyprinted {
   text-align: left;
   padding: 0px;
@@ -169,16 +151,6 @@ xmp {
   line-height: 2em;
 }
 
-.kode {
-  float: left;
-  margin: 0;
-  border: 0;
-}
-
-#game {
-  margin: auto;
-}
-
 pre {
   background-color: white !important;
 }
@@ -187,18 +159,18 @@ pre.prettyprint {
   border: 0px !important;
   border-color: inherit !important;
 }
-
+/* CSS-egenskaper til overlay på om oss-siden */
 .konteiner {
   position: relative;
   display: inline-block;
 }
-
+/* CSS-egenskaper til bilder på om oss-siden */
 .image {
   position: relative;
   height: 150px;
   width: 150px;
 }
-
+/* CSS-egenskaper for å gjemme overlay på om oss-siden */
 .overlay {
   position: absolute;
   top: 0;
@@ -211,11 +183,11 @@ pre.prettyprint {
   transition: .5s ease;
   background-color: #1d1f21;
 }
-
+/* CSS-egenskaper for å vise overlay på om oss-siden */
 .konteiner:hover .overlay {
   opacity: 0.8;
 }
-
+/*Tekst på om oss netisden */
 .text {
   color: white;
   font-size: 20px;
@@ -225,7 +197,7 @@ pre.prettyprint {
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
 }
-
+/* CSS-egenskaper for å få riktig utforming på om oss siden */
 @media(min-width: 992px) {
   .col5 {
     width: 20%;
@@ -248,7 +220,6 @@ pre.prettyprint {
     width: 75% !important;
   }
 }
-
 .container {
   margin-top: 2.5%;
 }
@@ -261,7 +232,7 @@ pre.prettyprint {
   margin-left: 0 !important;
   margin-right: 0 !important;
 }
-
+/* CSS-egenskaper til footer */
 .snoopfooter {
   position: fixed;
   left: 0;
@@ -287,15 +258,14 @@ pre.prettyprint {
   padding-left: 25%;
   padding-right: 25%;
 }
-
 .tooltiptext {
     visibility: hidden;
-    width: 200px;
+    width: 100px;
     background-color: grey;
     color: #fff;
     text-align: center;
     border-radius: 6px;
-    padding: 15px 0;
+    padding: 5px 0;
 
     /* Position the tooltip */
     position: absolute;
