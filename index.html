@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<html lang="no">
+
+<head>
+
+  <meta charset="utf-8">
+  <title>Snoop's Hunt</title>
+  <!-- Link til CSS -->
+  <link rel="stylesheet" type="text/css" href="style5.css" />
+  <!-- Link til Spill-CSS -->
+  <link rel="stylesheet" type="text/css" href="snoopshunt/gameCss.css">
+  <!-- Link til font -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  <!-- Link til funksjoner "//-" -->
+  <script src="snoopshunt.js"></script>
+
+
+  <!-- BOOTSTRAP -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+
+
+
+  <!-- NAVIGATION BAR -->
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a href="#"> <img  class="logo" src="img/weed.png" alt="logo" border:"0" width="23px" height="23px"> </a>
+        <a class="navbar-brand" href="index.html">Snoop Prog</a>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="index.html">Snoop's Hunt</a></li>
+          <li><a href="omoss.html">Om oss</a></li>
+          <li><a href="spillkode.html">Spillkode</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- SPILL -->
+  <div id="game">
+    <h1 id="timerboard"></h1>
+    <h1 id="scoreboard"></h1>
+  </div>
+
+  <script type="text/javascript" src="snoopshunt/gameCode.js">
+  </script>
+
+  <!-- "DARK MODE" KNAPP -->
+  <div align="center" class="darkmode">
+    <button class="darkmodebutton" onclick="lysbryter();"> <img id="myimg" alt="Dark mode/Cinema mode" src="img/switch-off.png" height="50px" width="50px"> </button>
+    <span class="tooltiptext">Game mode/Dark mode</span>
+  </div>
+
+  <!-- INSTRUKSJONER -->
+  <div class="instruksjonknappdiv" align="center">
+    <button class="instruksjonknapp" onclick="displayinstruksjoner();"> <img id="myimg2" alt="Vis/skjul instruksjoner" align="center" src="img/instruksjoner.png" height="35px;" width="35px;">
+  </button>
+  </div>
+  <div id="instruksjoner">
+    <h3>Instruksjoner</h3>
+    <p>
+      Her skal du hjelpe Snoop Dogg samle så mange cannabis-planter som mulig på 30 sekunder.
+      Trykker du på en plante får du et poeng.
+      Trykker du på en plante mens politiet kjører forbi får du 3 minuspoeng. <br>
+      Se etter den lille gutten. Lykke til!
+    </p>
+  </div>
+  <!-- Link til bilde: https://openclipart.org/detail/234546/info-button -->
+
+</body>
+
+</html>

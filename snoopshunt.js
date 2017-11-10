@@ -4,9 +4,7 @@ window.onLoad = checkage()
 function checkage() {
   var agePrompt = prompt("Hvor gammel er du?");
 
-  if (agePrompt >= 16) {
-    alert('Velkommen!')
-  } else if (isNaN(agePrompt)) {
+  if (agePrompt >= 16) {} else if (isNaN(agePrompt)) {
     alert('Bokstaver er ikke tillatt! Vennligst kun bruk tall.')
     checkage();
   } else {
@@ -25,11 +23,21 @@ function lysbryter() {
     i++
     document.getElementById("myimg").src = img_array[i];
     document.body.style.backgroundColor = "white";
-    document.getElementById('snoopshuntheader').style.color = 'black';
+    document.getElementById('instruksjoner').style.color = 'black';
   } else {
     i = 0
     document.getElementById("myimg").src = img_array[i];
     document.body.style.backgroundColor = "#1d1f21";
-    document.getElementById('snoopshuntheader').style.color = '#1d1f21';
+    document.getElementById('instruksjoner').style.color = '#333537';
+  }
+}
+
+
+//VIS INSTRUKSJONER
+  function displayinstruksjoner() {
+  if (document.getElementById('instruksjoner').style.display == "block") {
+    document.getElementById('instruksjoner').style.display = 'none';
+  } else {
+    document.getElementById('instruksjoner').style.display = 'block';
   }
 }
