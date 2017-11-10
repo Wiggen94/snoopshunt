@@ -4,7 +4,7 @@ var score = 0;
 var divId = 0;
 
 // lyder for pluss og minus poeng
-var is_safari = (navigator.userAgent.toString().toLowerCase().indexOf("safari") != -1) && (navigator.userAgent.toString().toLowerCase().indexOf("chrome") == -1);
+var is_safari = navigator.userAgent.indexOf("Safari") > -1;
 
 var minusLyd = new Audio('snoopshunt/minuspoeng.mp3');
 var plussLyd = new Audio('snoopshunt/plusspoeng.mp3');
