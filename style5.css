@@ -1,3 +1,9 @@
+h1 {
+	font-family: Arcadefont, arial-serif !important;
+	text-align: center !important;
+	font-size: 50px !important;
+	color: black !important;
+}
 .logo {
   position: relative;
   display: inline-block;
