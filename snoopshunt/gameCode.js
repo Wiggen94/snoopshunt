@@ -69,32 +69,32 @@ game.appendChild(startknapp);
 function startFunc() {
   // Hvis startknappen finnes så kjører koden den if-delen av koden
   musikk.play();
-  if (document.getElementById('startknapp') != null){
-  game.removeChild(startknapp);
-  game.removeChild(tittelh1);
-  drawTimer();
-  drawWeed();
-  scoreBoardUpdate();
-}
-// Når startknappen ikke finnes betyr det at restartknappen aktiverer koden og da kjører den delen
-else {
-  game.removeChild(restartknapp);
-
-  time = 30;
-  score = 0;
-  drawTimer();
-  drawWeed();
-  scoreBoardUpdate();
-  timerH1.style.display = 'inline';
-  scoreH1.style.display = 'inline';
-  if (document.getElementById('vinn') != null){
-    game.removeChild(vinn);
-    game.removeChild(snoopWin);
-  } else {
-    game.removeChild(tap);
+  if (document.getElementById('startknapp') != null) {
+    game.removeChild(startknapp);
+    game.removeChild(tittelh1);
+    drawTimer();
+    drawWeed();
+    scoreBoardUpdate();
   }
+  // Når startknappen ikke finnes betyr det at restartknappen aktiverer koden og da kjører den delen
+  else {
+    game.removeChild(restartknapp);
 
-}
+    time = 30;
+    score = 0;
+    drawTimer();
+    drawWeed();
+    scoreBoardUpdate();
+    timerH1.style.display = 'inline';
+    scoreH1.style.display = 'inline';
+    if (document.getElementById('vinn') != null) {
+      game.removeChild(vinn);
+      game.removeChild(snoopWin);
+    } else {
+      game.removeChild(tap);
+    }
+
+  }
 
 
 }
@@ -120,16 +120,16 @@ function drawTimer() {
       // Sørger for at gutten, snakkeboble og politi blir fjernet, hvis de finnes.
 
       //Sjekker om det er en weed tilstede, og fjerner den.
-      if(document.getElementById('weed'+ divId) != null ) {
+      if (document.getElementById('weed' + divId) != null) {
         clearTimeout(weedTimeout);
-        game.removeChild(document.getElementById('weed'+ divId));
+        game.removeChild(document.getElementById('weed' + divId));
       }
       //Fjerner timer og score.
       timerH1.style.display = 'none';
       scoreH1.style.display = 'none';
 
       // Sjekker om scoren er større enn vinn kravet, og kjører kode hvis den er sant.
-      if(score >= 1) {
+      if (score >= 1) {
         // Lager en div som skal inneholde vinn-teksten
         var vinn = document.createElement('div');
         vinn.setAttribute('id', 'vinn');
@@ -156,8 +156,7 @@ function drawTimer() {
 
         game.appendChild(vinn);
         game.appendChild(restartknapp);
-      }
-      else {
+      } else {
         // Lager en tap div som skal inneholde tap tekst og restart knapp.
         var tap = document.createElement('div');
         tap.setAttribute('id', 'tap');
@@ -193,23 +192,27 @@ function scoreBoardUpdate(change) {
   switch (change) {
     case '+':
       score++;
-      if (is_safari){
-      return;
-    } else {
-      plussLyd.play();
-    }
+      if (is_safari) {
+        return;
+      } else {
+        plussLyd.play();
+      }
       break;
     case '-':
       score--;
-      if (is_safari){
-      return;
-    } else {
-      minusLyd.play();
-    }
+      if (is_safari) {
+        return;
+      } else {
+        minusLyd.play();
+      }
       break;
     case '3':
       score -= 3;
-      minusLyd.play();
+      if (is_safari) {
+        return;
+      } else {
+        minusLyd.play();
+      }
   }
   scoreH1.innerHTML = "Score: " + score;
 }
@@ -237,15 +240,15 @@ var weedTimeout;
 // Timerfunksjon for hver plante med tilfeldig levetid r
 // Avslutter timeren hvis gutt finnes
 function weedTimer(weed) {
-  weedTimeout=setTimeout(function() {
+  weedTimeout = setTimeout(function() {
     if (document.getElementById('gutt') != null) {
       clearTimeout(weedTimeout);
     } //Avslutter gutt sjekk if-setningen
     else { //Gjør at man mister poeng hvis en plante forsvinner
-           // før man trykker på den
+      // før man trykker på den
       clearTimeout(weedTimeout);
       deleteWeed(weed, '-');
-     } //Avslutter gutt sjekk else-setningen
+    } //Avslutter gutt sjekk else-setningen
   }, Math.random() * (4000 - 1500) + 1500);
 
 }
@@ -268,7 +271,7 @@ function weedClick(weed, change) {
 function drawWeed() {
   var weed = new Weed(divId);
   weed.draw();
-  if (time < 29 && time > 2  && (Math.random() * (2000 - 1000) + 1000) < 1200 && document.getElementById('gutt') == null) {
+  if (time < 29 && time > 2 && (Math.random() * (2000 - 1000) + 1000) < 1200 && document.getElementById('gutt') == null) {
     drawGutt();
   }
 }
@@ -283,7 +286,7 @@ function deleteWeed(weed, change) {
 // Definerer hvordan en politibil skal tegnes
 
 function Politi() {
-   this.draw = function() {
+  this.draw = function() {
     var politi = document.createElement('img');
     politi.setAttribute('id', 'politi');
     politi.setAttribute('src', './img/politi.png');
@@ -300,7 +303,7 @@ function Politi() {
           game.removeChild(politi);
           game.removeChild(quotes);
           game.removeChild(gutt);
-          weedTimer(document.getElementById('weed'+divId));
+          weedTimer(document.getElementById('weed' + divId));
         }, 1);
       } else {
         pos += 5;
@@ -326,13 +329,13 @@ function Snakkeboble() {
   this.draw = function() {
     var quotes = document.createElement('div');
     quotes.setAttribute('id', 'quotes');
-    var quoteslist = ['./img/1.png', './img/2.png', './img/3.png','./img/4.png'];
+    var quoteslist = ['./img/1.png', './img/2.png', './img/3.png', './img/4.png'];
     var img = document.createElement('img');
     img.setAttribute('id', 'snakkeboble');
     img.src = quoteslist[Math.floor(Math.random() * quoteslist.length)];
     quotes.appendChild(img);
     game.appendChild(quotes);
-};
+  };
 }
 
 // Tegner en politibil og Snakkeboble
@@ -340,6 +343,7 @@ function drawPoliti() {
   var imgPoliti = new Politi();
   imgPoliti.draw();
 }
+
 function drawSnakkeboble() {
   var imgSnakkeboble = new Snakkeboble();
   imgSnakkeboble.draw();
