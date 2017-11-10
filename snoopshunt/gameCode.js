@@ -1,16 +1,18 @@
 // Globale variabler som brukes oer hele koden
-var time = 3;
+var time = 30;
 var score = 0;
 var divId = 0;
 
 // lyder for pluss og minus poeng
-var minusLyd = new Audio('minuspoeng.mp3');
-var plussLyd = new Audio('plusspoeng.mp3');
+var is_safari = (navigator.userAgent.toString().toLowerCase().indexOf("safari") != -1) && (navigator.userAgent.toString().toLowerCase().indexOf("chrome") == -1);
+
+var minusLyd = new Audio('snoopshunt/minuspoeng.mp3');
+var plussLyd = new Audio('snoopshunt/plusspoeng.mp3');
 
 // Bakgrunnsmusikk for spillet
-var musikk = new Audio('music.mp3')
-musikk.volume = 0.5
-musikk.currentTime = 2
+var musikk = new Audio('snoopshunt/music.mp3');
+musikk.volume = 0.5;
+musikk.currentTime = 2;
 //Lager restartknapp
 var restarth1 = document.createElement('h1');
 restarth1.setAttribute('id', 'restarth1');
@@ -73,11 +75,11 @@ function startFunc() {
   drawTimer();
   drawWeed();
   scoreBoardUpdate();
-} 
+}
 // Når startknappen ikke finnes betyr det at restartknappen aktiverer koden og da kjører den delen
 else {
   game.removeChild(restartknapp);
-  
+
   time = 30;
   score = 0;
   drawTimer();
@@ -105,7 +107,7 @@ function drawTimer() {
 
   // Timer, starter en interval som kjører hvert sekund.
   var timerInterval = setInterval(function() {
-    // Sjekker time fortsatt er større enn null, hvis den er sann så er spillet igang og timeren dekrementerer. 
+    // Sjekker time fortsatt er større enn null, hvis den er sann så er spillet igang og timeren dekrementerer.
     if (time > 0) {
       time--;
       timerH1.innerHTML = 'Time: ' + time;
@@ -116,7 +118,7 @@ function drawTimer() {
       musikk.pause();
       musikk.currentTime = 0;
       // Sørger for at gutten, snakkeboble og politi blir fjernet, hvis de finnes.
-      
+
       //Sjekker om det er en weed tilstede, og fjerner den.
       if(document.getElementById('weed'+ divId) != null ) {
         clearTimeout(weedTimeout);
@@ -126,9 +128,9 @@ function drawTimer() {
       timerH1.style.display = 'none';
       scoreH1.style.display = 'none';
 
-      // Sjekker om scoren er større enn vinn kravet, og kjører kode hvis den er sant. 
+      // Sjekker om scoren er større enn vinn kravet, og kjører kode hvis den er sant.
       if(score >= 1) {
-        // Lager en div som skal inneholde vinn-teksten 
+        // Lager en div som skal inneholde vinn-teksten
         var vinn = document.createElement('div');
         vinn.setAttribute('id', 'vinn');
 
@@ -140,9 +142,9 @@ function drawTimer() {
         vinnh1.setAttribute('id', 'vinnh1');
         vinnh1.setAttribute('class', 'header1');
 
-        // SNOOP IMG NÅR DU VINNER, PRØV Å FÅ FERDIG.
+        // SNOOP IMG NÅR DU VINNER
         var snoopWin = document.createElement('img');
-        snoopWin.setAttribute('src', '../img/snoop.gif');
+        snoopWin.setAttribute('src', './img/SnoopWin.gif');
         snoopWin.setAttribute('id', 'snoopWin');
 
         vinn.appendChild(snoopWin);
@@ -151,11 +153,11 @@ function drawTimer() {
         vinnh1.appendChild(vinnTekst);
         vinn.appendChild(vinnh1);
 
-        
+
         game.appendChild(vinn);
         game.appendChild(restartknapp);
       }
-      else { 
+      else {
         // Lager en tap div som skal inneholde tap tekst og restart knapp.
         var tap = document.createElement('div');
         tap.setAttribute('id', 'tap');
@@ -168,7 +170,13 @@ function drawTimer() {
         taph1.setAttribute('id', 'taph1');
         taph1.setAttribute('class', 'header1');
 
-        // Appender teksten til h1 og alt til game. 
+        // SNOOP IMG NÅR DU TAPER
+        var snoopLose = document.createElement('img');
+        snoopLose.setAttribute('src', './img/SnoopLose.gif');
+        snoopLose.setAttribute('id', 'snoopLose');
+
+        tap.appendChild(snoopLose);
+        // Appender teksten til h1 og alt til game.
         taph1.appendChild(tapTekst);
         tap.appendChild(taph1);
 
@@ -185,11 +193,19 @@ function scoreBoardUpdate(change) {
   switch (change) {
     case '+':
       score++;
+      if (is_safari){
+      return;
+    } else {
       plussLyd.play();
+    }
       break;
     case '-':
       score--;
+      if (is_safari){
+      return;
+    } else {
       minusLyd.play();
+    }
       break;
     case '3':
       score -= 3;
@@ -206,7 +222,7 @@ function Weed(divId) {
     weed.setAttribute('id', 'weed' + this.id++);
     weed.setAttribute('class', 'weed');
     weed.setAttribute('onclick', 'weedClick(' + weed.id + ');');
-    weed.style.backgroundImage = 'url("../img/plante.gif?' + weed.id + '")';
+    weed.style.backgroundImage = 'url("./img/plante.gif?' + weed.id + '")';
     weed.style.marginLeft = Math.random() * 600 + 'px';
 
     game.appendChild(weed);
@@ -241,7 +257,7 @@ function weedTimer(weed) {
 function weedClick(weed, change) {
   if (document.getElementById('snakkeboble') != null && time > 0) {
     clearTimeout(weedTimeout);
-    deleteWeed(weed, '3'); 
+    deleteWeed(weed, '3');
   } else {
     clearTimeout(weedTimeout);
     deleteWeed(weed, '+');
@@ -270,7 +286,7 @@ function Politi() {
    this.draw = function() {
     var politi = document.createElement('img');
     politi.setAttribute('id', 'politi');
-    politi.setAttribute('src', '../img/politi.png');
+    politi.setAttribute('src', './img/politi.png');
     politi.setAttribute('draggable', 'false');
     game.appendChild(politi);
 
@@ -298,7 +314,7 @@ function Gutt() {
   this.draw = function() {
     var gutt = document.createElement('img');
     gutt.setAttribute('id', 'gutt');
-    gutt.setAttribute('src', '../img/gutt.png');
+    gutt.setAttribute('src', './img/gutt.png');
     gutt.setAttribute('draggable', 'false');
     game.appendChild(gutt);
 
@@ -310,7 +326,7 @@ function Snakkeboble() {
   this.draw = function() {
     var quotes = document.createElement('div');
     quotes.setAttribute('id', 'quotes');
-    var quoteslist = ['../img/1.png', '../img/2.png', '../img/3.png','../img/4.png'];
+    var quoteslist = ['./img/1.png', './img/2.png', './img/3.png','./img/4.png'];
     var img = document.createElement('img');
     img.setAttribute('id', 'snakkeboble');
     img.src = quoteslist[Math.floor(Math.random() * quoteslist.length)];

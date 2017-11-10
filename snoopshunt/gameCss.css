@@ -117,8 +117,16 @@
     display: visible;
 }
 
-/* styler snoop gif-en */
+/* styler snoop gif-en når man vinner */
 #snoopWin {
+	float: right;
+	position: absolute;
+	margin-top: 255px;
+	margin-left: 25px;
+}
+
+/* styler snoop gif-en når man taper */
+#snoopLose {
 	float: right;
 	position: absolute;
 	margin-top: 255px;
