@@ -193,7 +193,6 @@ function scoreBoardUpdate(change) {
     case '+':
       if (is_safari) {
         score++;
-        return;
       } else {
         score++;
         plussLyd.play();
