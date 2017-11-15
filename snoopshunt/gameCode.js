@@ -7,8 +7,8 @@ var divId = 0;
 var is_safari = navigator.userAgent.indexOf("Safari") > -1;
 
 // Sjekker om brukeren bruker safari nettleser. Brukes for å angi om den skal spille av lyd i scoreBoardUpdate.
-var ua = navigator.userAgent.toLowerCase(); 
-if (ua.indexOf('safari') != -1) { 
+var ua = navigator.userAgent.toLowerCase();
+if (ua.indexOf('safari') != -1) {
   if (ua.indexOf('chrome') > -1) {
     is_safari = false;
   } else {
@@ -139,7 +139,7 @@ function drawTimer() {
       scoreH1.style.display = 'none';
 
       // Sjekker om scoren er større enn vinn kravet, og kjører kode hvis den er sant.
-      if (score >= 1) {
+      if (score >= 10) {
         // Lager en div som skal inneholde vinn-teksten
         var vinn = document.createElement('div');
         vinn.setAttribute('id', 'vinn');
@@ -208,7 +208,7 @@ function scoreBoardUpdate(change) {
       	plussLyd.load();
         plussLyd.play();
       }
-      
+
       break;
     case '-':
       if (is_safari) {
@@ -218,7 +218,7 @@ function scoreBoardUpdate(change) {
         minusLyd.load();
         minusLyd.play();
       }
-        
+
       break;
     case '3':
       if (is_safari) {
@@ -228,7 +228,7 @@ function scoreBoardUpdate(change) {
         minusLyd.load();
         minusLyd.play();
       }
-       
+
   }
   scoreH1.innerHTML = "Score: " + score;
 }
